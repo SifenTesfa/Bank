@@ -18,10 +18,10 @@ const Sidebar = () => {
 
   const Menus = [
     { title: "Overview", src: FaChartBar, href: route("dashboard") },
-    { title: "Banks", src: FaMoneyBillAlt, href: route("project.index") },
+    { title: "Banks", src: FaMoneyBillAlt, href: route("bank.index") },
     { title: "Blogs", src: FaRssSquare, href: route("task.index") },
-    { title: "Reviews", src: FaStar, href: route("user.index") },
-    { title: "Settings", src: FaCog, href: route("task.myTasks") },
+    { title: "Reviews", src: FaStar, href: route("task.myTasks") },
+    { title: "Settings", src: FaCog, href: route("user.index") },
     { title: "Logout", src: FaSignOutAlt, href: route("project.index"), gap: true },
   ];
 

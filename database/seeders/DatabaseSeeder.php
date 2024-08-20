@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Bank;
 use App\Models\Project;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -35,5 +35,6 @@ class DatabaseSeeder extends Seeder
             ->count(30)
             ->hasTasks(30)
             ->create();
+            Bank::factory()->count(10)->create();
     }
 }
