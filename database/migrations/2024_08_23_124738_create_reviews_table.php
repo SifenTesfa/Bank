@@ -22,7 +22,7 @@ return new class extends Migration
 
             // Add foreign key constraints if necessary
            
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            
         });
     }
 
