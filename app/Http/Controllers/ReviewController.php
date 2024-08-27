@@ -62,5 +62,9 @@ public function approve($id)
 
         return redirect()->back()->with('success', 'Review approved successfully!');
     }
+    public function list()
+    {
+        return Review::all();
+    }
 
 }
