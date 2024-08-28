@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class BlogPr extends Model
+class Blog extends Model
 {
     protected $fillable = [
         'title', 'content', 'status', 'image_path', 'slug'

@@ -39,21 +39,19 @@ class BlogController extends Controller
         ]);
     }
 
-    /
-     * Show the form for creating a new resource.
+    /* Show the form for creating a new resource.
      */
     public function create()
     {
         return inertia("Blog/Create");
     }
 
-    /
-     * Store a newly created resource in storage.
+    /* Store a newly created resource in storage.
      */
     public function store(StoreBlogRequest $request)
     {
         $data = $request->validated();
-        / @var $image \Illuminate\Http\UploadedFile */
+        /* @var $image \Illuminate\Http\UploadedFile */
         $image = $data['image'] ?? null;
         
         if ($image) {
@@ -67,8 +65,7 @@ class BlogController extends Controller
             ->with('success', 'Blog post was created');
     }
 
-    /
-     * Display the specified resource.
+    /* Display the specified resource.
      */
     public function show(Blog $blog)
     {
@@ -77,8 +74,7 @@ class BlogController extends Controller
         ]);
     }
 
-    /
-     * Show the form for editing the specified resource.
+    /* Show the form for editing the specified resource.
      */
     public function edit(Blog $blog)
     {
@@ -87,8 +83,7 @@ class BlogController extends Controller
         ]);
     }
 
-    /
-     * Update the specified resource in storage.
+    /* Update the specified resource in storage.
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
@@ -108,8 +103,7 @@ class BlogController extends Controller
             ->with('success', "Blog post \"$blog->title\" was updated");
     }
 
-    /
-     * Remove the specified resource from storage.
+    /* Remove the specified resource from storage.
      */
     public function destroy(Blog $blog)
     {
