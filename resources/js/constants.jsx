@@ -48,3 +48,16 @@ export const USER_STATUS_TEXT_MAP = {
   inactive: "Inactive",
   pending: "Pending",
 };
+
+// Blog Status Constants
+export const BLOG_STATUS_CLASS_MAP = {
+  draft: "bg-yellow-500",
+  published: "bg-green-500",
+  
+};
+
+export const BLOG_STATUS_TEXT_MAP = {
+  draft: "Draft",
+  published: "Published",
+ 
+};
