@@ -19,17 +19,19 @@ const Sidebar = () => {
   const Menus = [
     { title: "Overview", src: FaChartBar, href: route("dashboard") },
     { title: "Banks", src: FaMoneyBillAlt, href: route("bank.index") },
-    { title: "Blogs", src: FaRssSquare, href: route("task.index") },
-    { title: "Reviews", src: FaStar, href: route("task.myTasks") },
+    { title: "Blogs", src: FaRssSquare, href: route("blog.index") },
+    { title: "Reviews", src: FaStar, href: route("user.index") },
     { title: "Settings", src: FaCog, href: route("user.index") },
-    { title: "Logout", src: FaSignOutAlt, href: route("project.index"), gap: true },
+    { title: "Logout", src: FaSignOutAlt, href: route("user.index"), gap: true },
+    
+                        
   ];
 
   return (
     <div className="flex">
       <div
         className={`${
-          open ? "w-72" : "w-20"
+          open ? "w-60" : "w-20"
         } bg-dark-purple h-screen p-5 pt-8 relative duration-300`}
       >
         <div
@@ -55,7 +57,7 @@ const Sidebar = () => {
           {Menus.map((Menu, index) => (
             <li
               key={index}
-              className={`flex rounded-md p-2 cursor-pointer text-gray-300 text-sm items-center gap-x-4 ${
+              className={`flex rounded-md p-2 cursor-pointer text-gray-600 text-sm items-center gap-x-4 ${
                 Menu.gap ? "mt-9" : "mt-2"
               } ${
                 Menu.href === url
