@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Blog;
+use App\Models\Blogp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-class BlogController extends Controller
+class BlogpController extends Controller
 {
     //
     function addBlog(Request $req){
-        $blog_post = new Blog;
+        $blog_post = new Blogp;
         $blog_post->title=$req->input('title');
         $blog_post->content=$req->input('content');
         $blog_post->slug=$this->generateSlug();
@@ -17,12 +17,12 @@ class BlogController extends Controller
         return $blog_post;
     }
     function listBlog(){
-        return Blog::all();
+        return Blogp::all();
 
     }
     public function generateSlug(){
         $slug = Str::random(10);
-        while (Blog::where('slug',$slug)->exists()){
+        while (Blogp::where('slug',$slug)->exists()){
             $slug = Str::random(10);
         }
         return $slug;
