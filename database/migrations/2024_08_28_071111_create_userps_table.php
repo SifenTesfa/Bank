@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('userps', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bank_id');
-            $table->integer('rating');
-            $table->text('review');
+            $table->string('name'); 
+            $table->string('email')->unique(); 
+            $table->string('password'); 
+            $table->string('image')->nullable();
             $table->timestamps();
-
-            // Add foreign key constraints if necessary
-           
-            
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('userps');
     }
 };
