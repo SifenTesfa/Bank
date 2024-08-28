@@ -11,7 +11,7 @@ class ReviewController extends Controller
 public function store(Request $request)
 {
     $request->validate([
-        'userp_id' => 'required|exists:userps,id',
+        'user_id' => 'required|exists:users,id',
         'bank_id' => 'required|exists:banks,id',
         'rating' => 'required|integer|min:1|max:5',
         'review' => 'required|string|max:255',
@@ -19,7 +19,7 @@ public function store(Request $request)
 
 
     $review = new Review();
-    $review->userp_id = $request->userp_id;
+    $review->userp_id = $request->user_id;
     $review->bank_id = $request->bank_id;
     $review->rating = $request->rating;
     $review->review = $request->review;

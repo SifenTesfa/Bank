@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->longText('content');
             $table->string('slug')->unique();
             $table->string('status');
-            $table->string('image_path')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
