@@ -90,9 +90,12 @@ class BankController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBankRequest $request, Bank $bank)
+    public function update(UpdateBankRequest $request, $bankId)
     {
         $data = $request->validated();
+        $bank = Bank::find($bankId);
+        
+        
         $image = $data['image'] ?? null;
         if ($image) {
             if ($bank->image_path) {

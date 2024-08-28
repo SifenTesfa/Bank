@@ -1,59 +1,40 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from '@inertiajs/react';
+import React from 'react';
+import { Head } from '@inertiajs/inertia-react';
 
-export default function ReviewA() {
-  const [reviews, setReviews] = useState([]);
+const Reviews = ({ reviews }) => {
+    return (
+        <div>
+            <Head title="Reviews" />
 
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await axios.get('/api/reviews');
-        setReviews(response.data);
-      } catch (error) {
-        console.error('Failed to fetch reviews:', error);
-      }
-    };
+            <h1>Reviews</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Review</th>
+                        <th>Rating</th>
+                        <th>Bank ID</th>
+                        <th>User ID</th>
+                        <th>Status</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {reviews.map((review) => (
+                        <tr key={review.id}>
+                            <td>{review.id}</td>
+                            <td>{review.review}</td>
+                            <td>{review.rating}</td>
+                            <td>{review.bank_id}</td>
+                            <td>{review.user_id}</td>
+                            <td>{review.status}</td>
+                            <td>{new Date(review.timestamp).toLocaleString()}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
 
-    fetchReviews();
-  }, []);
-
-  const handleApproval = async (id) => {
-    try {
-      await axios.patch(`/api/reviews/${id}/approve`);
-      setReviews(reviews.map(review => review.id === id ? { ...review, status: 'approved' } : review));
-    } catch (error) {
-      console.error('Failed to approve review:', error);
-    }
-  };
-
-  return (
-    <div>
-      <h2>Review</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Review</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reviews.map(review => (
-            <tr key={review.id}>
-              <td>{review.id}</td>
-              <td>{review.review}</td>
-              <td>{review.status}</td>
-              <td>
-                {review.status === 'pending' && (
-                  <button onClick={() => handleApproval(review.id)}>Approve</button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
+export default Reviews;
