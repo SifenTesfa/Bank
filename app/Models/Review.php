@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
-    protected $fillable = ['bank_id', 'rating', 'review'];
+    protected $fillable = ['userp_id','bank_id', 'rating', 'review'];
 
     public function Bank()
     {
