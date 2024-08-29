@@ -14,7 +14,9 @@ class UserpController extends Controller
         $user->name= $req->input("name");
         $user->email= $req->input("email");
         $user->password=Hash::make ($req->input("password"));
-        $user->image=$req->file('image')->store('products');
+        if($req['image']){
+            $user->image=$req->file('image')->store('products');
+        }
         $user->role = 2;
         $user->save();
 
