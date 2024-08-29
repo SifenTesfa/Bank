@@ -9,17 +9,25 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->unsignedTinyInteger('status')->default(1); // Add status column
+            //
+             //
+             Schema::table('reviews', function (Blueprint $table) {
+                $table->unsignedTinyInteger('status')->default(1); // Add status column
+            });
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->dropColumn('status'); // Remove status column if rolling back
+            //
+            $table->dropColumn('status');
         });
     }
 };

@@ -19,31 +19,20 @@ public function store(Request $request)
 
 
     $review = new Review();
-    $review->userp_id = $request->user_id;
+    $review->user_id = $request->user_id;
     $review->bank_id = $request->bank_id;
     $review->rating = $request->rating;
     $review->review = $request->review;
     $review->status = 1; // Set status to 1 when created
     $review->save();
 
-    return redirect()->back()->with('success', 'Review submitted successfully!');
+    return response()->json([
+        'success' => true,
+        'message' => 'Review submitted successfully',
+    ], 200);
 }
 
-public function update(Request $request, $id)
-{
-    $review = Review::findOrFail($id);
 
-    $request->validate([
-        'rating' => 'required|integer|min:1|max:5',
-        'review' => 'required|string|max:255',
-    ]);
-
-    $review->rating = $request->rating;
-    $review->review = $request->review;
-    $review->save();
-
-    return redirect()->back()->with('success', 'Review updated successfully!');
-}
 
 public function destroy($id)
 {
