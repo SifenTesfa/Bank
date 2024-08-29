@@ -17,7 +17,6 @@ Route::get("list",[BanklistController::class,"list"]);
 Route::post ("addBlog",[BlogpController::class,"addBlog"]);
 Route::get("listBlog",[BlogpController::class,"listBlog"]);
 Route::post('reviews', [ReviewController::class, 'store']);
-Route::put('/reviews/{id}', [ReviewController::class, 'update']);
-Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
+Route::get('listReview', [ReviewController::class, 'listReview']);
 Route::post("register",[UserpController::class, "register"]);
 Route::post("login",[UserpController::class,"login"]);

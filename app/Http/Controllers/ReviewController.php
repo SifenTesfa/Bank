@@ -49,9 +49,13 @@ public function approve($id)
 
         return redirect()->back()->with('success', 'Review approved successfully!');
     }
-    public function list()
-    {
-        return Review::all();
-    }
+    public function listReview()
+{
+    // Fetch all reviews where the status is 2
+    $reviews = Review::where('status', 2)->get();
+
+    // Return the results as a JSON response
+    return response()->json($reviews);
+}
 
 }
