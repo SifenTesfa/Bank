@@ -11,15 +11,16 @@ class ReviewController extends Controller
 public function store(Request $request)
 {
     $request->validate([
-        'user_id' => 'required|exists:users,id',
         'bank_id' => 'required|exists:banks,id',
         'rating' => 'required|integer|min:1|max:5',
         'review' => 'required|string|max:255',
     ]);
 
-
-    $review = new Review();
-    $review->user_id = $request->user_id;
+    $review = Review::where(['user_id' => auth()->id(), 'bank_id' => $request->bank_id])->first();
+    if(!$review){
+        $review = new Review();
+    }
+    $review->user_id = auth()->id();
     $review->bank_id = $request->bank_id;
     $review->rating = $request->rating;
     $review->review = $request->review;

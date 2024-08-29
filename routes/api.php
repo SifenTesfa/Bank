@@ -16,7 +16,7 @@ Route::post ("addBank",[BanklistController::class,"addBank"]);
 Route::get("list",[BanklistController::class,"list"]);
 Route::post ("addBlog",[BlogpController::class,"addBlog"]);
 Route::get("listBlog",[BlogpController::class,"listBlog"]);
-Route::post('reviews', [ReviewController::class, 'store']);
+Route::post('reviews', [ReviewController::class, 'store'])->middleware(Authenticate::using('sanctum'));
 Route::get('listReview', [ReviewController::class, 'listReview']);
 Route::post("register",[UserpController::class, "register"]);
 Route::post("login",[UserpController::class,"login"]);

@@ -19,8 +19,14 @@ class UserpController extends Controller
         }
         $user->role = 2;
         $user->save();
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-        return $user;
+        return response()->json([
+            'success' => true,
+            'user' => $user,
+            'token' => $token
+        ], 200);
+
     }
 
     function login(Request $req){
@@ -28,6 +34,12 @@ class UserpController extends Controller
         if(!$user ||!Hash::check($req->password,$user->password)){
             return ["error"=>"email or password is not matched"];
         }
-        return $user;
-    }
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'success' => true,
+            'user' => $user,
+            'token' => $token
+        ], 200);    }
 }
